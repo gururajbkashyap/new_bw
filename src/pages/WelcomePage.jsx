@@ -65,10 +65,26 @@ export default function WelcomePage({ onNext }) {
           ✦ A Day Made For Her ✦
         </motion.p>
 
+        <motion.p
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.7 }}
+          style={{
+            fontFamily: "'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif",
+            fontSize: "clamp(1.1rem, 3.5vw, 2rem)",
+            color: "rgba(255,143,171,0.85)",
+            letterSpacing: "4px",
+            marginBottom: "4px",
+            textShadow: "0 0 16px rgba(255,143,171,0.5)",
+          }}
+        >
+          생일 축하해 🌸
+        </motion.p>
+
         <motion.h1
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.6, duration: 0.8, type: "spring", bounce: 0.4 }}
+          transition={{ delay: 0.75, duration: 0.8, type: "spring", bounce: 0.4 }}
           className="glow-gold pulse"
           style={{
             fontFamily: "'Cinzel Decorative', cursive",
