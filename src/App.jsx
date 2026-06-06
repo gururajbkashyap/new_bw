@@ -9,8 +9,9 @@ import PhotoPage from "./pages/PhotoPage";
 import ProphecyPage from "./pages/ProphecyPage";
 import NotePage from "./pages/NotePage";
 import TreatPage from "./pages/TreatPage";
+import EndingPage from "./pages/EndingPage";
 
-const PAGES = ["welcome", "photo", "prophecy", "note", "treat"];
+const PAGES = ["welcome", "photo", "prophecy", "note", "treat", "ending"];
 
 const slideVariants = {
   enter: (dir) => ({ x: dir > 0 ? "100%" : "-100%", opacity: 0 }),
@@ -63,7 +64,8 @@ const onTouchStart = (e) => { touchStartX.current = e.touches[0].clientX; };
           {page === "photo"   && <PhotoPage   onNext={() => go(1)} onBack={() => go(-1)} />}
           {page === "prophecy" && <ProphecyPage onNext={() => go(1)} onBack={() => go(-1)} />}
           {page === "note"    && <NotePage    onNext={() => go(1)} onBack={() => go(-1)} />}
-          {page === "treat"   && <TreatPage   onRestart={() => { setDir(-1); setPageIdx(0); }} />}
+          {page === "treat"   && <TreatPage   onNext={() => go(1)} onRestart={() => { setDir(-1); setPageIdx(0); }} />}
+          {page === "ending"  && <EndingPage  onBack={() => go(-1)} />}
         </motion.div>
       </AnimatePresence>
     </div>

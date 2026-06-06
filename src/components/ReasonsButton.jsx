@@ -141,7 +141,7 @@ export default function ReasonsButton() {
           e.currentTarget.style.boxShadow   = "0 0 12px rgba(255,143,171,0.3)";
         }}
       >
-        ✨
+        💝
       </motion.button>
 
       {/* ── Backdrop + modal ── */}

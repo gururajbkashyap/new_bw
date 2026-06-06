@@ -216,6 +216,10 @@ function BirthdayPopup({ onClose }) {
         >
           Wishing you the most beautiful year yet. 💕
           <br />You deserve every bit of happiness coming your way.
+          <br /><br />
+          <span style={{ color: "rgba(255,143,171,0.8)", fontSize: "0.95em" }}>
+            Let there be some spark innovation in your life. ✨
+          </span>
         </motion.p>
 
         <motion.button
@@ -242,7 +246,7 @@ function BirthdayPopup({ onClose }) {
   );
 }
 
-export default function TreatPage({ onRestart }) {
+export default function TreatPage({ onNext, onRestart }) {
   const firedOnce = useRef(false);
   const [showPopup, setShowPopup] = useState(false);
 
@@ -356,6 +360,9 @@ export default function TreatPage({ onRestart }) {
         style={{ marginTop: "4px" }}
       >
         <NavButton onClick={() => { fireStorm(); setShowPopup(true); }}>💕 Click Me</NavButton>
+        <div style={{ marginTop: "8px" }}>
+          <NavButton onClick={onNext}>Next →</NavButton>
+        </div>
       </motion.div>
 
       <AnimatePresence>
