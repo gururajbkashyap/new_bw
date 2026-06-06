@@ -19,33 +19,21 @@ export default function ProphecyPage({ onNext, onBack }) {
             style={{ position: "absolute", inset: 0 }}
           >
             {/* The photo, rotated portrait → landscape, covers screen */}
-            <div
+            <img
+              src="/photos/with%20mom.jpg"
+              alt="Soundarya with her mom"
               style={{
                 position: "absolute",
                 inset: 0,
-                overflow: "hidden",
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "center 20%",
               }}
-            >
-              <img
-                src="/photos/with%20mom.jpg"
-                alt="Soundarya with her mom"
-                style={{
-                  position: "absolute",
-                  /* Swap dims so rotated portrait fills landscape screen */
-                  height: "100vw",
-                  width: "100vh",
-                  maxWidth: "none",
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%) rotate(-90deg)",
-                  objectFit: "cover",
-                  objectPosition: "center center",
-                }}
-                onError={(e) => {
-                  e.currentTarget.style.display = "none";
-                }}
-              />
-            </div>
+              onError={(e) => {
+                e.currentTarget.style.display = "none";
+              }}
+            />
 
             {/* Dark gradient overlay — top and bottom */}
             <div style={{
