@@ -8,7 +8,7 @@ const OPTIONS = {
   fpsLimit: 60,
   particles: {
     number: { value: 120, density: { enable: true } },
-    color: { value: ["#ffffff", "#d4af37", "#f0d060", "#ae9153", "#fffbe6"] },
+    color: { value: ["#ffffff", "#ffd6e0", "#ff8fab", "#c9b8d8", "#fff0f5"] },
     opacity: {
       value: { min: 0.1, max: 0.8 },
       animation: { enable: true, speed: 0.5, sync: false },
@@ -46,13 +46,7 @@ export default function StarBackground() {
     <Particles
       id="tsparticles"
       options={OPTIONS}
-      style={{
-        position: "fixed",
-        inset: 0,
-        zIndex: 0,
-        width: "100%",
-        height: "100%",
-      }}
+      style={{ position: "fixed", inset: 0, zIndex: 0, width: "100%", height: "100%" }}
     />
   );
 }

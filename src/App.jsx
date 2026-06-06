@@ -46,7 +46,7 @@ export default function App() {
 
   return (
     <div
-      style={{ position: "fixed", inset: 0, background: "var(--bg)", overflow: "hidden" }}
+      style={{ position: "fixed", inset: 0, background: "transparent", overflow: "hidden" }}
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
     >

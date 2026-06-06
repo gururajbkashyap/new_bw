@@ -1,60 +1,56 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 
-// Happy Birthday to You — [frequency Hz, note duration s, gap after s]
+// Gentle music-box style Happy Birthday — sine oscillator, slower tempo
 const MELODY = [
   // "Hap-py birth-day to you"
-  [392.00, 0.18, 0.05],
-  [392.00, 0.18, 0.05],
-  [440.00, 0.36, 0.05],
-  [392.00, 0.36, 0.05],
-  [523.25, 0.36, 0.05],
-  [493.88, 0.65, 0.18],
+  [392.00, 0.26, 0.08],
+  [392.00, 0.26, 0.08],
+  [440.00, 0.50, 0.08],
+  [392.00, 0.50, 0.08],
+  [523.25, 0.50, 0.08],
+  [493.88, 0.90, 0.28],
 
   // "Hap-py birth-day to you"
-  [392.00, 0.18, 0.05],
-  [392.00, 0.18, 0.05],
-  [440.00, 0.36, 0.05],
-  [392.00, 0.36, 0.05],
-  [587.33, 0.36, 0.05],
-  [523.25, 0.65, 0.18],
+  [392.00, 0.26, 0.08],
+  [392.00, 0.26, 0.08],
+  [440.00, 0.50, 0.08],
+  [392.00, 0.50, 0.08],
+  [587.33, 0.50, 0.08],
+  [523.25, 0.90, 0.28],
 
-  // "Hap-py birth-day dear A-nan-ya"
-  [392.00, 0.18, 0.05],
-  [392.00, 0.18, 0.05],
-  [783.99, 0.36, 0.05],
-  [659.25, 0.36, 0.05],
-  [523.25, 0.36, 0.05],
-  [493.88, 0.36, 0.05],
-  [440.00, 0.65, 0.18],
+  // "Hap-py birth-day dear Soun-dar-ya"
+  [392.00, 0.26, 0.08],
+  [392.00, 0.26, 0.08],
+  [783.99, 0.50, 0.08],
+  [659.25, 0.50, 0.08],
+  [523.25, 0.50, 0.08],
+  [493.88, 0.50, 0.08],
+  [440.00, 0.90, 0.28],
 
   // "Hap-py birth-day to you"
-  [698.46, 0.18, 0.05],
-  [698.46, 0.18, 0.05],
-  [659.25, 0.36, 0.05],
-  [523.25, 0.36, 0.05],
-  [587.33, 0.36, 0.05],
-  [523.25, 0.80, 0.40],
+  [698.46, 0.26, 0.08],
+  [698.46, 0.26, 0.08],
+  [659.25, 0.50, 0.08],
+  [523.25, 0.50, 0.08],
+  [587.33, 0.50, 0.08],
+  [523.25, 1.10, 0.50],
 ];
 
-
-function scheduleNote(ctx, freq, start, duration, volume = 0.13) {
-  const osc = ctx.createOscillator();
+function scheduleNote(ctx, freq, start, duration, volume = 0.11) {
+  const osc  = ctx.createOscillator();
   const gain = ctx.createGain();
-  const reverb = ctx.createGain();
 
-  osc.type = "triangle";
+  // Sine wave = soft music-box / piano feel
+  osc.type = "sine";
   osc.frequency.value = freq;
 
   gain.gain.setValueAtTime(0, start);
-  gain.gain.linearRampToValueAtTime(volume, start + 0.04);
-  gain.gain.setValueAtTime(volume, start + duration * 0.6);
+  gain.gain.linearRampToValueAtTime(volume, start + 0.03);
+  gain.gain.setValueAtTime(volume, start + duration * 0.55);
   gain.gain.exponentialRampToValueAtTime(0.001, start + duration);
 
-  reverb.gain.value = 0.85;
-
   osc.connect(gain);
-  gain.connect(reverb);
-  reverb.connect(ctx.destination);
+  gain.connect(ctx.destination);
 
   osc.start(start);
   osc.stop(start + duration + 0.05);
@@ -62,7 +58,7 @@ function scheduleNote(ctx, freq, start, duration, volume = 0.13) {
 
 export default function MusicPlayer() {
   const [playing, setPlaying] = useState(false);
-  const ctxRef = useRef(null);
+  const ctxRef  = useRef(null);
   const loopRef = useRef(null);
 
   const scheduleMelody = useCallback((ctx, startAt) => {
@@ -77,14 +73,11 @@ export default function MusicPlayer() {
   const startLoop = useCallback(() => {
     const ctx = new AudioContext();
     ctxRef.current = ctx;
-
     let nextStart = ctx.currentTime + 0.1;
-
     const tick = () => {
       nextStart = scheduleMelody(ctx, nextStart);
       loopRef.current = setTimeout(tick, (nextStart - ctx.currentTime - 1.5) * 1000);
     };
-
     tick();
     setPlaying(true);
   }, [scheduleMelody]);
@@ -96,23 +89,19 @@ export default function MusicPlayer() {
     setPlaying(false);
   }, []);
 
-  const toggle = () => {
-    if (playing) stopLoop();
-    else startLoop();
-  };
+  const toggle = () => { if (playing) stopLoop(); else startLoop(); };
 
-  // Auto-start on first user interaction (browsers block audio before that)
   useEffect(() => {
-    const onFirstInteraction = () => {
+    const onFirst = () => {
       if (!ctxRef.current) startLoop();
-      document.removeEventListener("click", onFirstInteraction);
-      document.removeEventListener("keydown", onFirstInteraction);
+      document.removeEventListener("click",   onFirst);
+      document.removeEventListener("keydown", onFirst);
     };
-    document.addEventListener("click", onFirstInteraction, { once: true });
-    document.addEventListener("keydown", onFirstInteraction, { once: true });
+    document.addEventListener("click",   onFirst, { once: true });
+    document.addEventListener("keydown", onFirst, { once: true });
     return () => {
-      document.removeEventListener("click", onFirstInteraction);
-      document.removeEventListener("keydown", onFirstInteraction);
+      document.removeEventListener("click",   onFirst);
+      document.removeEventListener("keydown", onFirst);
     };
   }, [startLoop]);
 
@@ -121,14 +110,16 @@ export default function MusicPlayer() {
   return (
     <button
       onClick={toggle}
-      title={playing ? "Mute music" : "Play Happy Birthday"}
+      title={playing ? "Mute music" : "Play music"}
       style={{
         position: "fixed",
         top: 20,
         right: 20,
         zIndex: 100,
-        background: "rgba(212,175,55,0.12)",
-        border: "1px solid rgba(212,175,55,0.4)",
+        background: playing
+          ? "rgba(255,143,171,0.18)"
+          : "rgba(255,143,171,0.08)",
+        border: "1px solid rgba(255,143,171,0.4)",
         borderRadius: "50%",
         width: 42,
         height: 42,
@@ -140,11 +131,11 @@ export default function MusicPlayer() {
         backdropFilter: "blur(8px)",
         transition: "background 0.2s, box-shadow 0.2s",
         boxShadow: playing
-          ? "0 0 12px rgba(212,175,55,0.6), 0 0 28px rgba(212,175,55,0.3)"
+          ? "0 0 12px rgba(255,143,171,0.6), 0 0 28px rgba(255,143,171,0.3)"
           : "none",
       }}
-      onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(212,175,55,0.22)")}
-      onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(212,175,55,0.12)")}
+      onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,143,171,0.25)")}
+      onMouseLeave={(e) => (e.currentTarget.style.background = playing ? "rgba(255,143,171,0.18)" : "rgba(255,143,171,0.08)")}
     >
       {playing ? "🔊" : "🎵"}
     </button>

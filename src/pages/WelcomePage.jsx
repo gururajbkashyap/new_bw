@@ -4,15 +4,15 @@ import confetti from "canvas-confetti";
 import NavButton from "../components/NavButton";
 
 const SHOOTING_STARS = [
-  { top: "10%", left: "5%", delay: "0s" },
+  { top: "10%", left: "5%",  delay: "0s" },
   { top: "30%", left: "40%", delay: "1.2s" },
   { top: "60%", left: "70%", delay: "2.4s" },
   { top: "80%", left: "20%", delay: "0.8s" },
 ];
 
 function fireWelcomeConfetti() {
-  const colors = ["#d4af37", "#f0d060", "#ae0001", "#fff9e6", "#7b5ea7", "#ff6b6b"];
-  const burst = (opts) => confetti({ colors, origin: { y: 0.55 }, ...opts });
+  const colors = ["#ffb7c5", "#e8688a", "#f0d060", "#d4af37", "#fff9e6", "#ffdde1"];
+  const burst = (opts) => confetti({ colors, ...opts });
   setTimeout(() => {
     burst({ particleCount: 60, spread: 80, startVelocity: 55, angle: 60,  origin: { x: 0.1, y: 0.6 } });
     burst({ particleCount: 60, spread: 80, startVelocity: 55, angle: 120, origin: { x: 0.9, y: 0.6 } });
@@ -24,6 +24,7 @@ function fireWelcomeConfetti() {
 
 export default function WelcomePage({ onNext }) {
   useEffect(() => { fireWelcomeConfetti(); }, []);
+
   return (
     <div
       style={{
@@ -39,11 +40,7 @@ export default function WelcomePage({ onNext }) {
       }}
     >
       {SHOOTING_STARS.map((s, i) => (
-        <div
-          key={i}
-          className="shooting-star"
-          style={{ top: s.top, left: s.left, animationDelay: s.delay }}
-        />
+        <div key={i} className="shooting-star" style={{ top: s.top, left: s.left, animationDelay: s.delay }} />
       ))}
 
       <motion.div
@@ -61,11 +58,11 @@ export default function WelcomePage({ onNext }) {
             fontSize: "clamp(1rem, 3vw, 1.6rem)",
             letterSpacing: "6px",
             textTransform: "uppercase",
-            color: "rgba(212,175,55,0.7)",
+            color: "rgba(232,104,138,0.7)",
             marginBottom: "12px",
           }}
         >
-          ✦ A Magical Celebration ✦
+          ✦ A Day Made For Her ✦
         </motion.p>
 
         <motion.h1
@@ -90,12 +87,12 @@ export default function WelcomePage({ onNext }) {
           style={{
             fontFamily: "'Cinzel Decorative', cursive",
             fontSize: "clamp(2rem, 8vw, 5rem)",
-            color: "#ff6b6b",
-            textShadow: "0 0 12px #ae0001, 0 0 40px rgba(174,0,1,0.6)",
+            color: "#e8688a",
+            textShadow: "0 0 12px #c0426a, 0 0 40px rgba(232,104,138,0.6)",
             marginTop: "4px",
           }}
         >
-          Ananya Keshav ⚡
+          Soundarya 🌸
         </motion.h2>
 
         <motion.p
@@ -111,7 +108,7 @@ export default function WelcomePage({ onNext }) {
             textShadow: "0 0 12px rgba(212,175,55,0.6)",
           }}
         >
-          ✦ You're turning 22 today! 🎂 ✦
+          ✦ The Main Character turns 23 🎂 ✦
         </motion.p>
 
         <motion.p
@@ -127,8 +124,8 @@ export default function WelcomePage({ onNext }) {
             letterSpacing: "1px",
           }}
         >
-          "Happiness can be found even in the darkest of times,<br />
-          if one only remembers to turn on the light."
+          "Even the most ordinary day becomes a drama
+          <br />when you're the main character."
         </motion.p>
       </motion.div>
 

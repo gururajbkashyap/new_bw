@@ -17,25 +17,10 @@ export default function PhotoPage({ onNext, onBack }) {
         padding: "clamp(14px, 3vh, 24px)",
       }}
     >
-      <motion.p
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        style={{
-          fontFamily: "'Cinzel', serif",
-          fontSize: "clamp(0.8rem, 2vw, 1rem)",
-          letterSpacing: "5px",
-          textTransform: "uppercase",
-          color: "rgba(212,175,55,0.5)",
-        }}
-      >
-        ✦ Chapter One ✦
-      </motion.p>
-
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
+        transition={{ duration: 0.6 }}
         className="glow-gold"
         style={{
           fontFamily: "'Cinzel Decorative', cursive",
@@ -43,7 +28,7 @@ export default function PhotoPage({ onNext, onBack }) {
           textAlign: "center",
         }}
       >
-        Happy Birthday, my good friend! 🎂
+        Happiest Birthday to my Chatting Friend 🌸
       </motion.h2>
 
       <motion.div
@@ -54,19 +39,19 @@ export default function PhotoPage({ onNext, onBack }) {
           width: "min(460px, 88vw)",
           borderRadius: "12px",
           overflow: "hidden",
-          border: "2px solid rgba(212,175,55,0.55)",
-          boxShadow: "0 0 18px rgba(212,175,55,0.35), 0 0 48px rgba(212,175,55,0.15)",
+          border: "2px solid rgba(232,104,138,0.55)",
+          boxShadow: "0 0 18px rgba(232,104,138,0.35), 0 0 48px rgba(232,104,138,0.15)",
           lineHeight: 0,
         }}
       >
         <img
-          src="/photos/together.jpeg"
+          src="/photos/me%20and%20her.jpeg"
           alt="Us together"
           style={{ width: "100%", height: "auto", display: "block", borderRadius: "10px" }}
           onError={(e) => {
             e.currentTarget.style.display = "none";
             e.currentTarget.parentElement.innerHTML =
-              '<div style="display:flex;align-items:center;justify-content:center;height:200px;color:#d4af37;text-align:center;font-size:0.9rem;padding:16px;font-family:Cinzel,serif">📸 together.jpeg</div>';
+              '<div style="display:flex;align-items:center;justify-content:center;height:200px;color:#e8688a;text-align:center;font-size:0.9rem;padding:16px;font-family:Cinzel,serif">📸 me and her.jpeg</div>';
           }}
         />
       </motion.div>
@@ -83,7 +68,7 @@ export default function PhotoPage({ onNext, onBack }) {
           textAlign: "center",
         }}
       >
-        Wishing you all the magic in the world ✨
+        Every story needs a great co-star ✨
       </motion.p>
 
       <motion.div

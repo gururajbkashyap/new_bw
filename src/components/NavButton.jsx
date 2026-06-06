@@ -16,15 +16,15 @@ export default function NavButton({ onClick, children, variant = "primary", disa
     variant === "back"
       ? {
           ...base,
-          background: "transparent",
-          border: "1.5px solid rgba(212,175,55,0.5)",
-          color: "#d4af37",
+          background: "rgba(255,143,171,0.08)",
+          border: "1.5px solid rgba(255,143,171,0.5)",
+          color: "#ffd6e0",
         }
       : {
           ...base,
-          background: "linear-gradient(135deg, #ae0001 0%, #d4af37 100%)",
-          color: "#fff9e6",
-          boxShadow: "0 0 16px rgba(212,175,55,0.5), 0 0 40px rgba(174,0,1,0.3)",
+          background: "linear-gradient(135deg, #c0426a 0%, #ff8fab 100%)",
+          color: "#fff0f5",
+          boxShadow: "0 0 16px rgba(255,143,171,0.5), 0 0 40px rgba(192,66,106,0.3)",
         };
 
   return (
@@ -34,16 +34,22 @@ export default function NavButton({ onClick, children, variant = "primary", disa
       onMouseEnter={(e) => {
         if (!disabled) {
           e.currentTarget.style.transform = "scale(1.06)";
-          if (variant !== "back")
+          if (variant === "back") {
+            e.currentTarget.style.background = "rgba(255,143,171,0.18)";
+          } else {
             e.currentTarget.style.boxShadow =
-              "0 0 24px rgba(212,175,55,0.8), 0 0 60px rgba(174,0,1,0.5)";
+              "0 0 24px rgba(255,143,171,0.8), 0 0 60px rgba(192,66,106,0.5)";
+          }
         }
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.transform = "scale(1)";
-        if (variant !== "back")
+        if (variant === "back") {
+          e.currentTarget.style.background = "rgba(255,143,171,0.08)";
+        } else {
           e.currentTarget.style.boxShadow =
-            "0 0 16px rgba(212,175,55,0.5), 0 0 40px rgba(174,0,1,0.3)";
+            "0 0 16px rgba(255,143,171,0.5), 0 0 40px rgba(192,66,106,0.3)";
+        }
       }}
     >
       {children}

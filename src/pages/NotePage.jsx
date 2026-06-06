@@ -1,116 +1,123 @@
 import { motion } from "framer-motion";
 import NavButton from "../components/NavButton";
 
-// ✏️ Replace this with your actual note for Ananya Keshav
-const NOTE_TEXT = `Dear Ananya ,
-
-Every great story has a character who makes it worth reading — you are that person in ours.
-
-You bring the kind of warmth that makes even ordinary days feel like something out of a favourite book. Your kindness is your superpower, your laugh is contagious, and your spirit is something truly rare.
-
-On this birthday, I want you to know that the world is genuinely better because you're in it. You deserve every good thing that comes your way — and a whole lot more.
-
-May this year bring you adventures worthy of your favourite stories, friendships that feel like home, and moments that make your heart glow.
-
-Happy Birthday, Ananya.
-Here's to you — always. 🥂
-
-With love,
-Gururaj ⚡`;
-
-const lines = NOTE_TEXT.split("\n");
+const MESSAGES = [
+  { text: "I don't know how you do it.", delay: 0.3 },
+  { text: "You've carried so much this year — more than most people ever will. And you still showed up every single day as the warmest version of yourself.", delay: 1.0 },
+  { text: "That takes the kind of strength most people never find.", delay: 2.2 },
+  { text: "You know how in every K-drama, the main character goes through everything — and still comes out soft, kind, completely herself?", delay: 3.2 },
+  { text: "That's literally you, Soundarya. 💕", delay: 4.3 },
+  { text: "I'm genuinely proud to call you my best friend.", delay: 5.0 },
+  { text: "Happy Birthday 🌸🎂", delay: 5.7, highlight: true },
+];
 
 export default function NotePage({ onNext, onBack }) {
   return (
     <div
       style={{
-        position: "relative",
-        width: "100%",
-        height: "100%",
+        position: "absolute",
+        inset: 0,
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "space-between",
         zIndex: 1,
-        padding: "24px",
-        gap: "20px",
+        padding: "clamp(36px, 6vh, 56px) clamp(16px, 4vw, 40px) clamp(20px, 4vh, 36px)",
+        boxSizing: "border-box",
       }}
     >
-      <motion.p
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        style={{
-          fontFamily: "'Cinzel', serif",
-          fontSize: "clamp(0.75rem, 2vw, 0.95rem)",
-          letterSpacing: "5px",
-          textTransform: "uppercase",
-          color: "rgba(212,175,55,0.5)",
-        }}
-      >
-        ✦ Chapter Three ✦
-      </motion.p>
-
-      <motion.h2
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.1 }}
-        className="glow-gold"
-        style={{
-          fontFamily: "'Cinzel Decorative', cursive",
-          fontSize: "clamp(1.4rem, 4vw, 2.4rem)",
-          textAlign: "center",
-        }}
-      >
-        A Letter From Hogwarts 🦉
-      </motion.h2>
-
+      {/* Header */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.3, duration: 0.5 }}
-        className="glass-card"
-        style={{
-          width: "min(600px, 92vw)",
-          maxHeight: "48vh",
-          overflowY: "auto",
-          padding: "28px 32px",
-          textAlign: "left",
-          lineHeight: 2,
-          borderColor: "rgba(212,175,55,0.25)",
-        }}
+        initial={{ opacity: 0, y: -12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}
       >
-        {lines.map((line, i) => (
-          <motion.p
-            key={i}
-            initial={{ opacity: 0, x: -16 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.5 + i * 0.07, duration: 0.4 }}
-            style={{
-              marginBottom: line === "" ? "6px" : "0",
-              fontFamily: i === 0 ? "'Cinzel', serif" : "'IM Fell English', serif",
-              fontSize:
-                i === 0
-                  ? "clamp(1rem, 2.5vw, 1.2rem)"
-                  : "clamp(0.88rem, 2vw, 1rem)",
-              color:
-                i === 0
-                  ? "#d4af37"
-                  : i >= lines.length - 3
-                  ? "rgba(212,175,55,0.7)"
-                  : "rgba(255,249,230,0.85)",
-              fontStyle: i >= lines.length - 3 ? "italic" : "normal",
-            }}
-          >
-            {line || "\u00A0"}
-          </motion.p>
-        ))}
+        <p style={{
+          fontFamily: "'Cinzel', serif",
+          fontSize: "clamp(0.65rem, 1.5vw, 0.8rem)",
+          letterSpacing: "4px",
+          textTransform: "uppercase",
+          color: "rgba(255,143,171,0.5)",
+          margin: 0,
+        }}>
+          💬 a message for you
+        </p>
       </motion.div>
 
+      {/* Chat bubbles */}
+      <div
+        style={{
+          flex: 1,
+          width: "min(560px, 92vw)",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          gap: "clamp(8px, 1.4vh, 14px)",
+          padding: "clamp(8px, 1.5vh, 16px) 0",
+          overflowY: "auto",
+        }}
+      >
+        {MESSAGES.map((msg, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, x: 40, scale: 0.92 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ delay: msg.delay, duration: 0.45, type: "spring", bounce: 0.2 }}
+            style={{
+              alignSelf: "flex-end",
+              maxWidth: "85%",
+              background: msg.highlight
+                ? "linear-gradient(135deg, rgba(192,66,106,0.45) 0%, rgba(255,143,171,0.35) 100%)"
+                : "rgba(255,143,171,0.12)",
+              border: msg.highlight
+                ? "1px solid rgba(255,143,171,0.6)"
+                : "1px solid rgba(255,143,171,0.22)",
+              borderRadius: "18px 18px 4px 18px",
+              padding: "clamp(10px, 1.4vh, 14px) clamp(14px, 2vw, 20px)",
+              boxShadow: msg.highlight
+                ? "0 0 20px rgba(255,143,171,0.3)"
+                : "none",
+            }}
+          >
+            <p style={{
+              fontFamily: msg.highlight ? "'Cinzel Decorative', cursive" : "'IM Fell English', serif",
+              fontSize: msg.highlight
+                ? "clamp(0.95rem, 2.2vw, 1.2rem)"
+                : "clamp(0.88rem, 1.8vw, 1rem)",
+              color: msg.highlight ? "#ffd6e0" : "rgba(255,249,230,0.88)",
+              lineHeight: 1.65,
+              margin: 0,
+            }}>
+              {msg.text}
+            </p>
+          </motion.div>
+        ))}
+
+        {/* Sender tag */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 6.4, duration: 0.5 }}
+          style={{
+            alignSelf: "flex-end",
+            fontFamily: "'Cinzel', serif",
+            fontSize: "clamp(0.7rem, 1.5vw, 0.82rem)",
+            color: "rgba(255,143,171,0.5)",
+            letterSpacing: "2px",
+            margin: "2px 6px 0 0",
+          }}
+        >
+          — Gururaj 🌸
+        </motion.p>
+      </div>
+
+      {/* Nav */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.5, duration: 0.5 }}
-        style={{ display: "flex", gap: "16px", flexWrap: "wrap", justifyContent: "center" }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 6.6, duration: 0.5 }}
+        style={{ display: "flex", gap: "16px", flexWrap: "wrap", justifyContent: "center", flexShrink: 0 }}
       >
         <NavButton onClick={onBack} variant="back">← Back</NavButton>
         <NavButton onClick={onNext}>Next →</NavButton>
