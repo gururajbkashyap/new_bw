@@ -314,7 +314,7 @@ export default function TreatPage({ onRestart }) {
           lineHeight: 1.3,
         }}
       >
-        Pick Your Next Drama 🌸
+        I don't say this enough — but you genuinely inspire me. 🌸
       </motion.h1>
 
       <motion.p
@@ -328,7 +328,7 @@ export default function TreatPage({ onRestart }) {
           textShadow: "0 0 10px rgba(232,104,138,0.6)",
         }}
       >
-        I'm watching it with you, Soundarya 🎉
+        The way you keep going, keep smiling, keep being you...
       </motion.p>
 
       <motion.p
@@ -337,16 +337,16 @@ export default function TreatPage({ onRestart }) {
         transition={{ delay: 1.1, duration: 0.5 }}
         style={{
           fontFamily: "'IM Fell English', serif",
-          color: "rgba(212,175,55,0.55)",
-          fontSize: "clamp(0.85rem, 2vw, 1rem)",
+          color: "rgba(212,175,55,0.7)",
+          fontSize: "clamp(0.9rem, 2vw, 1.05rem)",
           fontStyle: "italic",
-          maxWidth: "460px",
-          lineHeight: 1.7,
+          maxWidth: "480px",
+          lineHeight: 1.8,
         }}
       >
-        You've cooked, cleaned, and carried everything for everyone.
+        I see it. I really do.
         <br />
-        Today, you just get to be the main character. 🌸
+        At 12am, I just wanted you to know — someone is thinking of you. 🌸
       </motion.p>
 
       <motion.div

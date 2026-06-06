@@ -2,13 +2,13 @@ import { motion } from "framer-motion";
 import NavButton from "../components/NavButton";
 
 const MESSAGES = [
-  { text: "I don't know how you do it.", delay: 1.3 },
-  { text: "You've carried so much this year — more than most people ever will. And you still showed up every single day as the warmest version of yourself.", delay: 2.0 },
-  { text: "That takes the kind of strength most people never find.", delay: 3.2 },
-  { text: "You know how in every K-drama, the main character goes through everything — and still comes out soft, kind, completely herself?", delay: 4.2 },
+  { text: "Soundarya, I genuinely don't know how you do it.", delay: 1.3 },
+  { text: "This year asked so much of you — more than it had any right to. And you carried it all, without ever losing the warmth that makes you, you.", delay: 2.0 },
+  { text: "That kind of strength? Most people search their whole lives for it.", delay: 3.2 },
+  { text: "You know how the best K-drama heroines go through absolute chaos — and somehow come out the other side still kind, still themselves? Yeah. That's a real person. That's you.", delay: 4.2 },
   { text: "That's literally you, Soundarya. 💕", delay: 5.3 },
-  { text: "I'm genuinely proud to call you my best friend.", delay: 6.0 },
-  { text: "Happy Birthday 🌸🎂", delay: 6.7, highlight: true },
+  { text: "And I want you to know — I'm really, really proud to be your friend.", delay: 6.0 },
+  { text: "Happy Birthday, Soundarya. You deserve every good thing. 🌸🎂", delay: 6.7, highlight: true },
 ];
 
 export default function NotePage({ onNext, onBack }) {
@@ -52,9 +52,9 @@ export default function NotePage({ onNext, onBack }) {
           width: "min(560px, 92vw)",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
+          justifyContent: "flex-start",
           gap: "clamp(8px, 1.4vh, 14px)",
-          padding: "clamp(8px, 1.5vh, 16px) 0",
+          padding: "clamp(16px, 2.5vh, 28px) 0 clamp(8px, 1.5vh, 16px)",
           overflowY: "auto",
         }}
       >
@@ -87,6 +87,7 @@ export default function NotePage({ onNext, onBack }) {
                 : "clamp(0.88rem, 1.8vw, 1rem)",
               color: msg.highlight ? "#ffd6e0" : "rgba(255,249,230,0.88)",
               lineHeight: 1.65,
+              letterSpacing: msg.highlight ? "1.5px" : "normal",
               margin: 0,
             }}>
               {msg.text}
