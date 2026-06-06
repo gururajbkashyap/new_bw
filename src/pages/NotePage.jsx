@@ -2,13 +2,13 @@ import { motion } from "framer-motion";
 import NavButton from "../components/NavButton";
 
 const MESSAGES = [
-  { text: "I don't know how you do it.", delay: 0.3 },
-  { text: "You've carried so much this year — more than most people ever will. And you still showed up every single day as the warmest version of yourself.", delay: 1.0 },
-  { text: "That takes the kind of strength most people never find.", delay: 2.2 },
-  { text: "You know how in every K-drama, the main character goes through everything — and still comes out soft, kind, completely herself?", delay: 3.2 },
-  { text: "That's literally you, Soundarya. 💕", delay: 4.3 },
-  { text: "I'm genuinely proud to call you my best friend.", delay: 5.0 },
-  { text: "Happy Birthday 🌸🎂", delay: 5.7, highlight: true },
+  { text: "I don't know how you do it.", delay: 1.3 },
+  { text: "You've carried so much this year — more than most people ever will. And you still showed up every single day as the warmest version of yourself.", delay: 2.0 },
+  { text: "That takes the kind of strength most people never find.", delay: 3.2 },
+  { text: "You know how in every K-drama, the main character goes through everything — and still comes out soft, kind, completely herself?", delay: 4.2 },
+  { text: "That's literally you, Soundarya. 💕", delay: 5.3 },
+  { text: "I'm genuinely proud to call you my best friend.", delay: 6.0 },
+  { text: "Happy Birthday 🌸🎂", delay: 6.7, highlight: true },
 ];
 
 export default function NotePage({ onNext, onBack }) {
@@ -98,7 +98,7 @@ export default function NotePage({ onNext, onBack }) {
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 6.4, duration: 0.5 }}
+          transition={{ delay: 7.4, duration: 0.5 }}
           style={{
             alignSelf: "flex-end",
             fontFamily: "'Cinzel', serif",
@@ -116,7 +116,7 @@ export default function NotePage({ onNext, onBack }) {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 6.6, duration: 0.5 }}
+        transition={{ delay: 7.6, duration: 0.5 }}
         style={{ display: "flex", gap: "16px", flexWrap: "wrap", justifyContent: "center", flexShrink: 0 }}
       >
         <NavButton onClick={onBack} variant="back">← Back</NavButton>

@@ -22,6 +22,7 @@ export default function ProphecyPage({ onNext, onBack }) {
             <img
               src="/photos/with%20mom.jpg"
               alt="Soundarya with her mom"
+              className="mom-photo-img"
               style={{
                 position: "absolute",
                 inset: 0,

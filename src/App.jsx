@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import StarBackground from "./components/StarBackground";
 import FloatingCandles from "./components/FloatingCandles";
 import PageBorder from "./components/PageBorder";
+import ReasonsButton from "./components/ReasonsButton";
 import WelcomePage from "./pages/WelcomePage";
 import PhotoPage from "./pages/PhotoPage";
 import ProphecyPage from "./pages/ProphecyPage";
@@ -52,6 +53,7 @@ export default function App() {
       <StarBackground />
       <FloatingCandles />
       <PageBorder />
+      <ReasonsButton />
 
       <AnimatePresence>
         {showSwipeHint && (

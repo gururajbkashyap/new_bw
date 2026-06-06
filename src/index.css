@@ -86,6 +86,21 @@ body {
 .glow-pink   { color: var(--rose-light); text-shadow: 0 0 10px var(--rose), 0 0 30px var(--rose), 0 0 60px rgba(255,143,171,0.5); }
 .glow-purple { color: var(--lavender);   text-shadow: 0 0 10px var(--purple), 0 0 30px rgba(201,184,216,0.6); }
 
+/* Fix mom photo stored rotated — apply rotation correction only on landscape/desktop */
+@media (orientation: landscape) {
+  .mom-photo-img {
+    inset: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 100vh !important;
+    height: 100vw !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) rotate(-90deg) !important;
+    object-position: center center !important;
+  }
+}
+
 @keyframes pulse-glow {
   0%, 100% { text-shadow: 0 0 10px var(--gold), 0 0 30px var(--gold); }
   50%       { text-shadow: 0 0 20px var(--gold-light), 0 0 60px var(--gold), 0 0 100px rgba(212,175,55,0.8); }
