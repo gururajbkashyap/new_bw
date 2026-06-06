@@ -68,7 +68,9 @@ export default function ProphecyPage({ onNext, onBack }) {
               }}>
                 She's so proud of you, Soundarya.
                 <br />
-                She always will be. 🌸
+                Some love doesn't leave. It just changes the way it holds you.
+                <br />
+                She always will be. ❤️
               </p>
             </motion.div>
 

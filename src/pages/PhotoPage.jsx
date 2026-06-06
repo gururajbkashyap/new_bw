@@ -68,7 +68,7 @@ export default function PhotoPage({ onNext, onBack }) {
           textAlign: "center",
         }}
       >
-        Every story needs a great co-star ✨
+        The kind of friend you only find in K-dramas — except she's real.
       </motion.p>
 
       <motion.div

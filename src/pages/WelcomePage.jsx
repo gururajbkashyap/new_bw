@@ -80,31 +80,58 @@ export default function WelcomePage({ onNext }) {
           Happy Birthday
         </motion.h1>
 
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", marginTop: "4px" }}>
-          {"Soundarya".split("").map((letter, i) => (
-            <motion.span
-              key={i}
-              initial={{ opacity: 0, y: 18, filter: "blur(6px)" }}
-              animate={{ opacity: 1, y: 0,  filter: "blur(0px)" }}
-              transition={{ delay: 1 + i * 0.08, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-              style={{
-                fontFamily: "'Cinzel Decorative', cursive",
-                fontSize: "clamp(2rem, 8vw, 5rem)",
-                color: "#e8688a",
-                textShadow: "0 0 12px #c0426a, 0 0 40px rgba(232,104,138,0.6)",
-                display: "inline-block",
-              }}
-            >
-              {letter}
-            </motion.span>
-          ))}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "clamp(8px, 2vw, 16px)", marginTop: "4px", flexWrap: "nowrap" }}>
+          {/* Left rotating heart */}
           <motion.span
-            initial={{ opacity: 0, scale: 0.5, filter: "blur(6px)" }}
-            animate={{ opacity: 1, scale: 1,  filter: "blur(0px)" }}
-            transition={{ delay: 1 + 9 * 0.08 + 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            style={{ fontSize: "clamp(2rem, 8vw, 5rem)", marginLeft: "10px", display: "inline-block" }}
+            initial={{ opacity: 0, scale: 0.4 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.9, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            style={{ display: "inline-block", fontSize: "clamp(1.6rem, 5vw, 3.2rem)", flexShrink: 0 }}
           >
-            🌸
+            <motion.span
+              animate={{ rotateY: 360 }}
+              transition={{ repeat: Infinity, duration: 2.5, ease: "linear" }}
+              style={{ display: "inline-block" }}
+            >
+              💗
+            </motion.span>
+          </motion.span>
+
+          {/* Soundarya letters */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+            {"Soundarya".split("").map((letter, i) => (
+              <motion.span
+                key={i}
+                initial={{ opacity: 0, y: 18, filter: "blur(6px)" }}
+                animate={{ opacity: 1, y: 0,  filter: "blur(0px)" }}
+                transition={{ delay: 1 + i * 0.08, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+                style={{
+                  fontFamily: "'Cinzel Decorative', cursive",
+                  fontSize: "clamp(2rem, 8vw, 5rem)",
+                  color: "#e8688a",
+                  textShadow: "0 0 12px #c0426a, 0 0 40px rgba(232,104,138,0.6)",
+                  display: "inline-block",
+                }}
+              >
+                {letter}
+              </motion.span>
+            ))}
+          </div>
+
+          {/* Right rotating heart */}
+          <motion.span
+            initial={{ opacity: 0, scale: 0.4 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 1 + 9 * 0.08 + 0.15, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            style={{ display: "inline-block", fontSize: "clamp(1.6rem, 5vw, 3.2rem)", flexShrink: 0 }}
+          >
+            <motion.span
+              animate={{ rotateY: 360 }}
+              transition={{ repeat: Infinity, duration: 2.5, ease: "linear" }}
+              style={{ display: "inline-block" }}
+            >
+              💗
+            </motion.span>
           </motion.span>
         </div>
 
@@ -137,8 +164,8 @@ export default function WelcomePage({ onNext }) {
             letterSpacing: "1px",
           }}
         >
-          "Even the most ordinary day becomes a drama
-          <br />when you're the main character."
+          "For the girl who holds everyone else together —
+          <br />tonight, we hold you."
         </motion.p>
       </motion.div>
 

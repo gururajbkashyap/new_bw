@@ -74,6 +74,21 @@ function fireStorm() {
   setTimeout(spawnEmojiRain, 1600);
 }
 
+function fadeOutConfetti() {
+  const canvas = document.querySelector("canvas");
+  if (canvas) {
+    canvas.style.transition = "opacity 1.2s ease";
+    canvas.style.opacity = "0";
+    setTimeout(() => {
+      confetti.reset();
+      canvas.style.opacity = "1";
+      canvas.style.transition = "";
+    }, 1300);
+  } else {
+    confetti.reset();
+  }
+}
+
 function SparkleTrail() {
   useEffect(() => {
     const emojis = ["❤️", "🌸", "💕", "✿", "💖"];
@@ -366,7 +381,7 @@ export default function TreatPage({ onNext, onRestart }) {
       </motion.div>
 
       <AnimatePresence>
-        {showPopup && <BirthdayPopup onClose={() => setShowPopup(false)} />}
+        {showPopup && <BirthdayPopup onClose={() => { fadeOutConfetti(); setShowPopup(false); }} />}
       </AnimatePresence>
     </div>
   );
