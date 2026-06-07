@@ -376,7 +376,7 @@ export default function TreatPage({ onNext, onRestart }) {
       >
         <NavButton onClick={() => { fireStorm(); setShowPopup(true); }}>💕 Click Me</NavButton>
         <div style={{ marginTop: "8px" }}>
-          <NavButton onClick={onNext}>Next →</NavButton>
+          
         </div>
       </motion.div>
 

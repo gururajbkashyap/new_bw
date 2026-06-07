@@ -65,7 +65,7 @@ const onTouchStart = (e) => { touchStartX.current = e.touches[0].clientX; };
           {page === "prophecy" && <ProphecyPage onNext={() => go(1)} onBack={() => go(-1)} />}
           {page === "note"    && <NotePage    onNext={() => go(1)} onBack={() => go(-1)} />}
           {page === "treat"   && <TreatPage   onNext={() => go(1)} onRestart={() => { setDir(-1); setPageIdx(0); }} />}
-          {page === "ending"  && <EndingPage  onBack={() => go(-1)} />}
+          
         </motion.div>
       </AnimatePresence>
     </div>
