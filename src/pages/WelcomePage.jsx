@@ -148,7 +148,7 @@ export default function WelcomePage({ onNext }) {
             textShadow: "0 0 12px rgba(212,175,55,0.6)",
           }}
         >
-          ✦ The Main Character turns 23 🎂 ✦
+          ✦ The Main Character turns 22 🎂 ✦
         </motion.p>
 
         <motion.p
